@@ -1,6 +1,6 @@
 import * as usersService from '../../utilities/users-service';
 
-export default function OrderHistoryPage() {
+export default function Dashboard() {
 
   async function handleCheckToken() {
     // Promise will resolve to a Date object
@@ -10,7 +10,7 @@ export default function OrderHistoryPage() {
 
   return (
     <>
-      <h1>OrderHistoryPage</h1>
+      <h1>Dashboard</h1>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
     </>
   );

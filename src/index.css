@@ -1,33 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&family=Raleway&display=swap");
+
 :root {
-  --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
-  --text-light: #968c84;
-  --text-dark: #615954;
+  --bgc-01: #35f287;
+  --bgc-02: #41d983;
+  --bgc-03: #bf622c;
+  --bgc-04: #f2b8a2;
+  --bgc-05: #732929;
+  --col-01: #f2b8a2;
+  --col-02: #f0b7a1;
+  --col-03: #c99a87;
+  --fnt-headers: Londrina Solid;
+  --fnt-body: Raleway;
+  --fnt-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --h1: 3.583rem;
+  --h2: 2.986rem;
+  --h3: 2.488rem;
+  --h4: 2.074rem;
+  --h5: 1.728rem;
+  --h6: 1.44rem;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 body {
+  background-color: var(--bgc-01);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: Raleway, -apple-system, "Roboto", "Cantarell", "Oxygen", "Ubuntu",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  color: var(--col-01);
   padding: 2vmin;
   height: 100vh;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fnt-headers);
+  font-weight: 900;
+  color: var(--col-02);
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+h5 {
+  font-size: var(--h5);
+}
+
+h6 {
+  font-size: var(--h6);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--fnt-headers);
+  font-weight: 400;
 }
 
 #root {
@@ -68,20 +127,20 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--tan-1);
-  color: var(--text-dark);
-  border: .1vmin solid var(--tan-3);
+  background-color: var(--bgc-02);
+  color: var(--col-03);
+  border: 0.1vmin solid var(--bgc-02);
   border-radius: 1vmin;
-  padding: .6vmin;
+  padding: 0.6vmin;
   text-align: center;
   font-size: 2vmin;
 }
 
 .form-container {
-  padding: 3vmin;
-  background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
-  border-radius: 1vmin;
+  padding: 2rem;
+  background-color: var(--bgc-03);
+  border: 0.2vmin solid var(--bgc-02);
+  border-radius: 1rem;
 }
 
 p.error-message {
@@ -92,31 +151,39 @@ p.error-message {
 form {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
-  color: var(--text-light);
+  gap: 1vmin;
+  color: var(--bgc-05);
 }
 
 label {
-  font-size: 2vmin;
+  font-size: 1.3em;
+  font-weight: 600;
   display: flex;
   align-items: center;
 }
 
 input {
-  padding: 1vmin;
-  font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
-  border-radius: .5vmin;
-  color: var(--text-dark);
+  padding: 0.5rem;
+  margin: 1rem;
+  font-size: 1.5em;
+  font-family: var(--fnt-body);
+  border: 0.2vmin solid var(--bgc-05);
+  border-radius: 0.5vmin;
+  color: var(--bgc-05);
   background-image: none !important; /* prevent lastpass */
   outline: none;
 }
 
 input:focus {
-  border-color: var(--orange);
+  border: 0.2vmin dashed var(--bgc-01);
 }
 
-button, a.button {
+input::placeholder {
+  opacity: 0.2;
+}
+
+button,
+a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
@@ -125,23 +192,24 @@ button, a.button {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
+  border: 0.1vmin solid var(--tan-2);
+  border-radius: 0.5vmin;
   outline: none;
   cursor: pointer;
 }
 
 button.btn-sm {
   font-size: 1.5vmin;
-  padding: .6vmin .8vmin;
+  padding: 0.6vmin 0.8vmin;
 }
 
 button.btn-xs {
   font-size: 1vmin;
-  padding: .4vmin .5vmin;
+  padding: 0.4vmin 0.5vmin;
 }
 
-button:disabled, form:invalid button[type="submit"] {
+button:disabled,
+form:invalid button[type="submit"] {
   cursor: not-allowed;
   background-color: var(--tan-4);
 }

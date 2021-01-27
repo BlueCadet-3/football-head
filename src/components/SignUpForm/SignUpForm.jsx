@@ -50,6 +50,7 @@ export default class SignUpForm extends Component {
               value={this.state.name}
               onChange={this.handleChange}
               required
+              placeholder=""
             />
             <label>Email</label>
             <input
@@ -58,12 +59,11 @@ export default class SignUpForm extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               required
+              placeholder="Required"
             />
             <label>
-              League ID
-              <a href="" alt="Find your ESPN public league ID">
+              League ID &nbsp;&nbsp;
               <i class="fas fa-question-circle"></i>
-              </a>
             </label>
             <input
               type="number"
@@ -71,6 +71,7 @@ export default class SignUpForm extends Component {
               value={this.state.league}
               onChange={this.handleChange}
               required
+              placeholder="Required"
             />
             <label>Password</label>
             <input
@@ -79,6 +80,7 @@ export default class SignUpForm extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               required
+              placeholder="Required"
             />
             <label>Confirm</label>
             <input
@@ -87,8 +89,9 @@ export default class SignUpForm extends Component {
               value={this.state.confirm}
               onChange={this.handleChange}
               required
+              placeholder="Required"
             />
-            <button type="submit" disabled={disable}>
+            <button className="AuthPage" type="submit" disabled={disable}>
               SIGN UP
             </button>
           </form>
