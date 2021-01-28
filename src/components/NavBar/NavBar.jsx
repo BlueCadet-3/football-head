@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../../components/Logo/Logo";
 import * as userService from "../../utilities/users-service";
+import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -10,15 +13,13 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
-      <Link to="/orders">Order History</Link>
-      &nbsp; | &nbsp;
-      <Link to="/orders/new">New Order</Link>
-      &nbsp;&nbsp;<span>Welcome, {user.name} of {user.league} </span>
-      &nbsp;&nbsp;
-      <Link to="" onClick={handleLogOut}>
-        Log Out
-      </Link>
-    </nav>
+    <div className="NavBar">
+      <nav className="NavBar">
+        <Logo />
+        <Link to="" onClick={handleLogOut}>
+          <FontAwesomeIcon icon="sign-out-alt" id="signOut" />
+        </Link>
+      </nav>
+    </div>
   );
 }

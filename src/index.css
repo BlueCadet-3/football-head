@@ -34,7 +34,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--col-01);
-  padding: 2vmin;
   height: 100vh;
   overflow-x: hidden;
   user-select: none;
