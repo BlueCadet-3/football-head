@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import Dashboard from "../Dashboard/Dashboard";
 import NavBar from "../../components/NavBar/NavBar";
 import YearBar from "../../components/YearBar/YearBar";
-
-library.add(fas, faSignOutAlt);
+ 
+library.add(fas);
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -22,7 +22,6 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <YearBar user={user} />
           <Switch>
-
             <Route path="/orders/new">
               <NewOrderPage />
             </Route>
@@ -32,7 +31,6 @@ export default function App() {
             </Route>
 
             <Redirect to="/dashboard" />
-
           </Switch>
         </>
       ) : (

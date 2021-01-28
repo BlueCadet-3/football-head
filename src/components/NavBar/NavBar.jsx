@@ -16,7 +16,7 @@ export default function NavBar({ user, setUser }) {
     <div className="NavBar">
       <nav className="NavBar">
         <Logo />
-        <Link to="" onClick={handleLogOut}>
+        <Link to="/" onClick={handleLogOut} id="signOut">
           <FontAwesomeIcon icon="sign-out-alt" id="signOut" />
         </Link>
       </nav>

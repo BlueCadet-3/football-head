@@ -1,11 +1,13 @@
 import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default class SignUpForm extends Component {
   state = {
-    name: "",
     email: "",
     league: "",
+    team: "",
     password: "",
     confirm: "",
     error: "",
@@ -43,35 +45,38 @@ export default class SignUpForm extends Component {
       <div>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              required
-              placeholder=""
-            />
             <label>Email</label>
             <input
               type="email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
-              required
               placeholder="Required"
+              required
             />
             <label>
-              League ID &nbsp;&nbsp;
-              <i class="fas fa-question-circle"></i>
+              League ID &nbsp;
+              <FontAwesomeIcon icon={faQuestionCircle} />
             </label>
             <input
               type="number"
               name="league"
               value={this.state.league}
               onChange={this.handleChange}
-              required
               placeholder="Required"
+              required
+            />
+            <label>
+              Team ID &nbsp;
+              <FontAwesomeIcon icon={faQuestionCircle} />
+            </label>
+            <input
+              type="number"
+              name="team"
+              value={this.state.team}
+              onChange={this.handleChange}
+              placeholder="Required"
+              required
             />
             <label>Password</label>
             <input
@@ -79,8 +84,8 @@ export default class SignUpForm extends Component {
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
-              required
               placeholder="Required"
+              required
             />
             <label>Confirm</label>
             <input
@@ -88,8 +93,8 @@ export default class SignUpForm extends Component {
               name="confirm"
               value={this.state.confirm}
               onChange={this.handleChange}
-              required
               placeholder="Required"
+              required
             />
             <button className="AuthPage" type="submit" disabled={disable}>
               SIGN UP

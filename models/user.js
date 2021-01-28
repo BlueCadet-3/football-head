@@ -7,12 +7,20 @@ const SALT_ROUNDS = 6; // 6 is a reasonable value
 
 const userSchema = new Schema(
   {
-    name: { type: String, required: true },
     email: {
       type: String,
       unique: true,
       trim: true,
       lowercase: true,
+      required: true,
+    },
+    league: {
+      type: Number,
+      required: true,
+    },
+    team: {
+      type: Number,
+      max: 1000,
       required: true,
     },
     password: {
@@ -21,10 +29,6 @@ const userSchema = new Schema(
       minLength: 3,
       required: true,
     },
-    league: {
-      type: Number,
-      required: true,
-    }
   },
   {
     timestamps: true,

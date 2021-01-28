@@ -1,13 +1,16 @@
 ::-webkit-scrollbar-track {
   box-shadow: none;
+  max-height: 2vh;
   -webkit-box-shadow: none !important;
   background-color: transparent;
 }
 ::-webkit-scrollbar {
+  height: 2vh;
   width: 3px !important;
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
+  height: 2vh;
   background-color: transparent;
 }
 
@@ -19,16 +22,4 @@
   display: flex;
   justify-content: flex-end;
   overflow-x: scroll;
-  padding: 0.5em;
-}
-
-a {
-  display: inline-block;
-  padding: 0.4em;
-}
-
-#signOut {
-  color: var(--col-03);
-  font-size: 1.5em;
-  justify-content: flex-end;
 }
