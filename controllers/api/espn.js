@@ -1,20 +1,21 @@
-const Season = require("../../models/season");
+const User = require("../../models/user");
 
 module.exports = {
   create,
-  findSeason,
 };
 
-async function findSeason(req, res) {
-  const season = await Season.find({}).populate("user").exec();
-  res.json(season);
-}
-
 async function create(req, res) {
+  let seasonArr = req.body.map(num => {
+    return {year: num}
+  });
+  console.log(seasonArr);
   try {
-    const season = await Season.create(req.body);
-    // res.json(season);
-    console.log(season);
+    const user = await User.findById(req.user._id);
+    seasonArr.forEach(year => {
+      user.seasons.push(year);
+    });
+    user.save();
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }

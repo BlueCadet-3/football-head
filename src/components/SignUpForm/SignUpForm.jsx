@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { signUp } from "../../utilities/users-service";
-import { getSeason } from "../../utilities/espn-api";
+import { signUp, login } from "../../utilities/users-service";
+import { getSeason, createSeasons } from "../../utilities/espn-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
@@ -10,6 +10,7 @@ export default class SignUpForm extends Component {
     email: "",
     league: "",
     team: "",
+    year: "",
     password: "",
     confirm: "",
     error: "",
@@ -17,7 +18,7 @@ export default class SignUpForm extends Component {
 
   handleChange = (evt) => {
     this.setState({
-      [evt.target.name]: evt.target.value, 
+      [evt.target.name]: evt.target.value,
       error: "",
     });
   };
@@ -34,11 +35,10 @@ export default class SignUpForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      const user = await signUp(formData);
+      let user = await signUp(formData);
+      const season = await getSeason(formData.league, formData.year);
+      createSeasons(season.status.previousSeasons);
       this.props.setUser(user);
-      
-      const season = await getSeason(formData.league, 2020);
-      console.log(season);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });
     }
@@ -50,7 +50,7 @@ export default class SignUpForm extends Component {
       <div>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -60,7 +60,7 @@ export default class SignUpForm extends Component {
               placeholder="Required"
               required
             />
-            <label for="league">
+            <label htmlFor="league">
               League ID &nbsp;
               <div className="tooltip">
                 <FontAwesomeIcon icon={faQuestionCircle}>
@@ -75,6 +75,7 @@ export default class SignUpForm extends Component {
                 </FontAwesomeIcon>
               </div>
             </label>
+
             <input
               type="number"
               name="league"
@@ -84,7 +85,25 @@ export default class SignUpForm extends Component {
               placeholder="Required"
               required
             />
-            <label for="team">
+
+            <label htmlFor="year">
+              Year &nbsp;
+              <div className="tooltip">
+                <FontAwesomeIcon icon={faQuestionCircle}></FontAwesomeIcon>
+              </div>
+            </label>
+
+            <input
+              type="number"
+              name="year"
+              id="year"
+              value={this.state.year}
+              onChange={this.handleChange}
+              placeholder="Required"
+              required
+            />
+
+            <label htmlFor="team">
               Team ID &nbsp;
               <FontAwesomeIcon icon={faQuestionCircle} />
             </label>
@@ -97,7 +116,7 @@ export default class SignUpForm extends Component {
               placeholder="Required"
               required
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
@@ -107,7 +126,7 @@ export default class SignUpForm extends Component {
               placeholder="Required"
               required
             />
-            <label for="confirm">Confirm</label>
+            <label htmlFor="confirm">Confirm</label>
             <input
               type="password"
               name="confirm"

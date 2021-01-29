@@ -15,7 +15,7 @@ library.add(fas);
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-
+  console.log(user);
   return (
     <main className="App">
       {user ? (
@@ -28,7 +28,7 @@ export default function App() {
             </Route>
 
             <Route path="/dashboard">
-              <Dashboard user={user} />
+              <Dashboard user={user} setUser={setUser} getUser={getUser} />
             </Route>
 
             <Route path="/2020">

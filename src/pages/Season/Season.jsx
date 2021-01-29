@@ -4,14 +4,14 @@ import * as espnService from "../../utilities/espn-api";
 import "../../../node_modules/react-vis/dist/style.css";
 import {
   XYPlot,
-  LineSeries,
+  // LineSeries,
   VerticalGridLines,
   HorizontalGridLines,
   XAxis,
   YAxis,
   VerticalBarSeries,
-  VerticalBarSeriesCanvas,
-  LabelSeries,
+  // VerticalBarSeriesCanvas,
+  // LabelSeries,
 } from "react-vis";
 import "./Season.css";
 

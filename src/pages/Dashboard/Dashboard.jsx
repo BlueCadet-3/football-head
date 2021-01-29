@@ -1,20 +1,21 @@
 import * as usersService from "../../utilities/users-service";
-import * as espnService from "../../utilities/espn-api";
+import { useEffect } from "react";
+// import * as espnService from "../../utilities/espn-api";
 import "../../../node_modules/react-vis/dist/style.css";
 import {
   XYPlot,
-  LineSeries,
+  // LineSeries,
   VerticalGridLines,
   HorizontalGridLines,
   XAxis,
   YAxis,
   VerticalBarSeries,
-  VerticalBarSeriesCanvas,
-  LabelSeries,
+  // VerticalBarSeriesCanvas,
+  // LabelSeries,
 } from "react-vis";
 import "./Dashboard.css";
 
-export default function Dashboard({ user }) {
+export default function Dashboard({ user, setUser, getUser }) {
   async function handleCheckToken() {
     // Promise will resolve to a Date object
     const expDate = await usersService.checkToken();
