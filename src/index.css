@@ -27,7 +27,7 @@
 }
 
 body {
-  background-color: var(--bgc-01);
+  background-color: var(--bgc-02);
   margin: 0;
   font-family: Raleway, -apple-system, "Roboto", "Cantarell", "Oxygen", "Ubuntu",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -104,49 +104,6 @@ button {
   height: 100%;
 }
 
-.align-ctr {
-  text-align: center;
-}
-
-.align-rt {
-  text-align: right;
-}
-
-.smaller {
-  font-size: smaller;
-}
-
-.flex-ctr-ctr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.flex-j-end {
-  justify-content: flex-end;
-}
-
-.scroll-y {
-  overflow-y: scroll;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--bgc-02);
-  color: var(--col-03);
-  border: 0.1vmin solid var(--bgc-02);
-  border-radius: 1vmin;
-  padding: 0.6vmin;
-  text-align: center;
-  font-size: 2vmin;
-}
-
 .form-container {
   padding: 2rem;
   background-color: var(--bgc-03);
@@ -155,7 +112,7 @@ button {
 }
 
 p.error-message {
-  color: var(--orange);
+  color: var(--bgc-05);
   text-align: center;
 }
 
@@ -206,11 +163,12 @@ button.btn-xs {
 
 button:disabled,
 form:invalid button[type="submit"] {
+  background-color: var(--bgc-03);
   cursor: not-allowed;
-  background-color: var(--tan-4);
 }
 
 button[type="submit"] {
+  background-color: var(--bgc-05);
   grid-column: span 2;
   margin: 1vmin 0 0;
 }

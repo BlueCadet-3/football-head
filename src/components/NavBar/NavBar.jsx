@@ -16,9 +16,12 @@ export default function NavBar({ user, setUser }) {
     <div className="NavBar">
       <nav className="NavBar">
         <Logo />
-        <Link to="/" onClick={handleLogOut} id="signOut">
-          <FontAwesomeIcon icon="sign-out-alt" id="signOut" />
+        <h1>FOOTBALL HEAD</h1>
+        <div id="logOut">
+        <Link to="/" onClick={handleLogOut} id="logOut">
+          <FontAwesomeIcon icon="sign-out-alt" id="logOut" />
         </Link>
+        </div>
       </nav>
     </div>
   );

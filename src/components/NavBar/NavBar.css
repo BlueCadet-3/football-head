@@ -1,15 +1,21 @@
 .NavBar nav {
-  background-color: var(--bgc-05);
+  background-color: var(--bgc-02);
   display: flex;
-  height: 20vmin;
+  height: 15vmin;
 }
 
 .NavBar img {
-  max-height: 20vmin;
+  max-height: 15vmin;
   justify-content: left;
 }
 
-#signOut {
+.NavBar h1 {
+  color: var(--bgc-05);
+  margin: 0;
+}
+
+#logOut {
   color: var(--bgc-03);
-  font-size: 1.4em;
+  font-size: 1.2em;
+  justify-content: center;
 }

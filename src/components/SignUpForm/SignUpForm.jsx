@@ -2,6 +2,7 @@ import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {
@@ -45,52 +46,68 @@ export default class SignUpForm extends Component {
       <div>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Email</label>
+            <label for="email">Email</label>
             <input
               type="email"
               name="email"
+              id="email"
               value={this.state.email}
               onChange={this.handleChange}
               placeholder="Required"
               required
             />
-            <label>
+            <label for="league">
               League ID &nbsp;
-              <FontAwesomeIcon icon={faQuestionCircle} />
+              <div className="tooltip">
+                <FontAwesomeIcon icon={faQuestionCircle}>
+                  <span className="tooltiptext">
+                    <img
+                      src="https://www.scriptol.com/images/apache.png"
+                      alt="League ID Tooltip"
+                    />
+                    <h3>How use my site</h3>
+                    The description with an image.
+                  </span>
+                </FontAwesomeIcon>
+              </div>
             </label>
             <input
               type="number"
               name="league"
+              id="league"
               value={this.state.league}
               onChange={this.handleChange}
               placeholder="Required"
               required
             />
-            <label>
+            <label for="team">
               Team ID &nbsp;
               <FontAwesomeIcon icon={faQuestionCircle} />
             </label>
             <input
               type="number"
               name="team"
+              id="team"
               value={this.state.team}
               onChange={this.handleChange}
               placeholder="Required"
               required
             />
-            <label>Password</label>
+            <label for="password">Password</label>
             <input
               type="password"
               name="password"
+              id="password"
               value={this.state.password}
               onChange={this.handleChange}
               placeholder="Required"
               required
             />
-            <label>Confirm</label>
+            <label for="confirm">Confirm</label>
             <input
               type="password"
               name="confirm"
+              id="confirm"
               value={this.state.confirm}
               onChange={this.handleChange}
               placeholder="Required"

@@ -1,16 +1,16 @@
 ::-webkit-scrollbar-track {
   box-shadow: none;
-  max-height: 2vh;
+  max-height: 0;
   -webkit-box-shadow: none !important;
   background-color: transparent;
 }
 ::-webkit-scrollbar {
-  height: 2vh;
+  height: 0;
   width: 3px !important;
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  height: 2vh;
+  height: ;
   background-color: transparent;
 }
 
@@ -18,8 +18,20 @@
   max-height: 10vh;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  background-color: var(--bgc-03);
+  background-color: var(--bgc-01);
   display: flex;
   justify-content: flex-end;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+}
+
+.YearBar a {
+  display: block;
+  font-weight: 600;
+  color: var(--col-03);
+  padding: 1rem;
+}
+
+.YearBar a:hover {
+  background-color: var(--bgc-03);
+  color: var(--bgc-04);
 }
