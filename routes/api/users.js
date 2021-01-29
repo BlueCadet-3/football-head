@@ -10,5 +10,4 @@ router.post('/', usersCtrl.create);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
 
-
 module.exports = router;

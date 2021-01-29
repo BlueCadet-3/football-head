@@ -7,6 +7,7 @@ import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import Dashboard from "../Dashboard/Dashboard";
+import Season from "../Season/Season";
 import NavBar from "../../components/NavBar/NavBar";
 import YearBar from "../../components/YearBar/YearBar";
  
@@ -28,6 +29,10 @@ export default function App() {
 
             <Route path="/dashboard">
               <Dashboard user={user} />
+            </Route>
+
+            <Route path="/2020">
+              <Season user={user} />
             </Route>
 
             <Redirect to="/dashboard" />

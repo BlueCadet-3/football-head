@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
+import { getSeason } from "../../utilities/espn-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
@@ -16,7 +17,7 @@ export default class SignUpForm extends Component {
 
   handleChange = (evt) => {
     this.setState({
-      [evt.target.name]: evt.target.value,
+      [evt.target.name]: evt.target.value, 
       error: "",
     });
   };
@@ -35,6 +36,9 @@ export default class SignUpForm extends Component {
       // payload of the JSON Web Token (JWT)
       const user = await signUp(formData);
       this.props.setUser(user);
+      
+      const season = await getSeason(formData.league, 2020);
+      console.log(season);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });
     }
