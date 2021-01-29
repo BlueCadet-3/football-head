@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const BASE_URL = "http://fantasy.espn.com/apis/v3/games/ffl/seasons";
+const BASE_URL = "https://fantasy.espn.com/apis/v3/games/ffl/seasons";
 
 export function getSeason(league, year) {
   return sendRequest(
