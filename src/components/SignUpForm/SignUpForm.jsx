@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { signUp, login } from "../../utilities/users-service";
-import { getSeason, createSeasons } from "../../utilities/espn-api";
+import { getSeason, getPastSeasons } from "../../utilities/espn-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
@@ -35,10 +35,11 @@ export default class SignUpForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      let user = await signUp(formData);
+      const user = await signUp(formData);
+      console.log(user);
       const season = await getSeason(formData.league, formData.year);
-      createSeasons(season.status.previousSeasons);
-      this.props.setUser(user);
+      const updatedUser = await getPastSeasons(season.status.previousSeasons);
+      this.props.setUser(updatedUser);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });
     }
@@ -60,6 +61,7 @@ export default class SignUpForm extends Component {
               placeholder="Required"
               required
             />
+
             <label htmlFor="league">
               League ID &nbsp;
               <div className="tooltip">
@@ -92,6 +94,19 @@ export default class SignUpForm extends Component {
                 <FontAwesomeIcon icon={faQuestionCircle}></FontAwesomeIcon>
               </div>
             </label>
+
+            {/* <select
+              name="year"
+              id="year"
+              onChange={this.handleChange}
+              value={this.state.year}
+            >
+              <option selected value={2020}>
+                2020
+              </option>
+              <option value={2019}>2019</option>
+              <option value={2018}>2018</option>
+            </select> */}
 
             <input
               type="number"

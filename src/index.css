@@ -105,6 +105,7 @@ button {
 }
 
 .form-container {
+  max-width: 80vw;
   padding: 2rem;
   background-color: var(--bgc-03);
   border: 0.2vmin solid var(--bgc-02);
@@ -131,8 +132,9 @@ label {
   justify-content: flex-end;
 }
 
-input {
-  padding: 0.5rem;
+input, select {
+  background-color: whitesmoke;
+  padding: 0.3rem;
   margin: 1rem;
   font-size: 1.5em;
   font-family: var(--fnt-body);
@@ -143,8 +145,12 @@ input {
   outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
   border: 0.3vmin dashed var(--bgc-01);
+}
+
+option:hover {
+  background-color: var(--bgc-01);
 }
 
 input::placeholder {

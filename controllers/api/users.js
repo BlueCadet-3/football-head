@@ -1,11 +1,11 @@
-const User = require('../../models/user');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const User = require("../../models/user");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
 };
 
 function checkToken(req, res) {
@@ -23,7 +23,7 @@ async function create(req, res) {
     // The client code take this into consideration
     res.json(token);
   } catch (err) {
-    // Client will check for non-2xx status code 
+    // Client will check for non-2xx status code
     // 400 = Bad Request
     res.status(400).json(err);
   }
@@ -37,7 +37,7 @@ async function login(req, res) {
     const token = createJWT(user);
     res.json(token);
   } catch {
-    res.status(400).json('Bad Credentials');
+    res.status(400).json("Bad Credentials");
   }
 }
 
@@ -48,6 +48,6 @@ function createJWT(user) {
     // data payload
     { user },
     process.env.SECRET,
-    { expiresIn: '14d' }
+    { expiresIn: "14d" }
   );
 }

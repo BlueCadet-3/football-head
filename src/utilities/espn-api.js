@@ -9,12 +9,8 @@ export function getSeason(league, year) {
   );
 }
 
-export function createSeasons(yearArr) {
-  return sendRequest(
-    "/api/espn", "POST", yearArr
-  );
+export function getPastSeasons(seasonArr) {
+  return (
+    sendRequest("/api/espn", "POST", seasonArr)
+  )
 }
-
-// export function getById(id) {
-//   return sendRequest(`${BASE_URL}/${id}`);
-// }
