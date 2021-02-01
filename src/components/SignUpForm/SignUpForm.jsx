@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { signUp, login } from "../../utilities/users-service";
-import { getSeason, getPastSeasons } from "../../utilities/espn-api";
+import { initSeason, getPastSeasons } from "../../utilities/espn-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
@@ -35,10 +35,17 @@ export default class SignUpForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
+      //
+      // create user
       const user = await signUp(formData);
-      console.log(user);
-      const season = await getSeason(formData.league, formData.year);
-      const updatedUser = await getPastSeasons(season.status.previousSeasons);
+      // make call to ESPN API with provided league ID and most recent season
+      const data = await initSeason(formData.league, formData.year);
+      // update user "seasons" property with previous seasons as indicated by ESPN API
+      console.log("user:", user);
+      // let updatedUser = await getPastSeasons(data.status.previousSeasons);
+      let updatedUser = await getPastSeasons(data);
+      // setUser to the user with "seasons" data
+      console.log("updatedUser:", updatedUser);
       this.props.setUser(updatedUser);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });

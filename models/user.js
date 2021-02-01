@@ -5,12 +5,25 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6; // 6 is a reasonable value
 
-const seasonSchema = new Schema({
-  year: {
-    type: Number,
+const dataSchema = new Schema({
+  data: {
+    type: Object,
     required: true,
   },
 });
+
+const seasonSchema = new Schema(
+  {
+    year: {
+      type: Number,
+      required: true,
+    },
+    data: [dataSchema],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const userSchema = new Schema(
   {

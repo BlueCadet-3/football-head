@@ -33,7 +33,7 @@ body {
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--col-01);
+  color: var(--col-03);
   height: 100vh;
   overflow-x: hidden;
   user-select: none;

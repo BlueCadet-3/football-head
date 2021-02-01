@@ -17,7 +17,7 @@ import "./Season.css";
 
 export default function Season({ user }) {
   useEffect(() => {
-    let season = espnService.getSeason(user.league, 2020);
+    let season = espnService.getSeason(user.league, user.year);
     console.log(season);
   }, [user.league]);
 
@@ -66,7 +66,8 @@ export default function Season({ user }) {
       <h1>2020</h1>
       <p>
         League ID: {user.league} <br />
-        Team ID: {user.team}
+        Team ID: {user.team} <br />
+        Season: {user.year} <br />
       </p>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
       {/* <button onClick={handleESPNRequest}>2020</button> */}

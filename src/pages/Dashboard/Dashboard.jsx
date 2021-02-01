@@ -22,11 +22,6 @@ export default function Dashboard({ user, setUser, getUser }) {
     console.log(new Date(expDate));
   }
 
-  // async function handleESPNRequest({ user }) {
-  //   const espnRes = await espnService;
-  //   console.log(espnRes);
-  // }
-
   const data = [
     { x: 1, y: 122 },
     { x: 2, y: 134 },
@@ -66,7 +61,9 @@ export default function Dashboard({ user, setUser, getUser }) {
       <h1>Dashboard</h1>
       <p>
         League ID: {user.league} <br />
-        Team ID: {user.team}
+        Team ID: {user.team} <br />
+        Season: {user.year} | {user.seasons.length} <br />
+        {/* Season: {user.seasons[0]} <br /> */}
       </p>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
       {/* <button onClick={handleESPNRequest}>2020</button> */}
