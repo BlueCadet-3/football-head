@@ -1,7 +1,7 @@
 import sendRequest from "./send-request";
 
 const BASE_URL =
-  "https://cors-anywhere.herokuapp.com/https://fantasy.espn.com/apis/v3/games/ffl/seasons";
+  "https://fantasy.espn.com/apis/v3/games/ffl/seasons";
 
 export function initSeason(league, year) {
   return sendRequest(
