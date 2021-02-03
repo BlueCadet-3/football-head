@@ -1,6 +1,6 @@
 # Football Head
 
-![Football Head - Preview](https://i.imgur.com/1rOJ12C.png)
+![Football Head - Preview](https://i.imgur.com/XM5pXUw.png)
 
 ---
 
@@ -21,10 +21,13 @@
 
 - [React](https://reactjs.org/) - [[docs]](https://reactjs.org/docs/getting-started.html)
   - [Font Awesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+  - [React-Vis](https://github.com/uber/react-vis) - [[docs]](http://uber.github.io/react-vis/documentation/welcome-to-react-vis)
 
 - [Heroku](https://www.heroku.com/)
 
 - [MongoDB Cloud](https://www.mongodb.com/cloud)
+
+- [ESPN Fantasy Football API](https://www.espn.com/apis/devcenter/overview.html)
 
 ---
 
@@ -34,9 +37,9 @@
 
 Planning took place on the [Trello](https://trello.com/b/tRo19vkS/football-head) platform
 
-The app is deployed on [Heroku](http://.herokuapp.com/), test credentials are provided below
+The app is deployed on [Heroku]([http://.herokuapp.com/](https://footballhead.herokuapp.com/)), test credentials are provided below
 
-- User: `test`
+- User: `test@test.com`
 - Password: `123`
 
 ---
@@ -45,4 +48,9 @@ The app is deployed on [Heroku](http://.herokuapp.com/), test credentials are pr
 
 ---
 
-
+- Create new API function on first time browse to season year
+- Create virtual properties and instance methods on the user model
+- More interesting data points and visualizations
+- Create API function for years < 2018
+- Stronger email validation, select year rather than input
+- Style/component overhaul
