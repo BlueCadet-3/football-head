@@ -1,16 +1,8 @@
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// Add the bcrypt library
-const bcrypt = require("bcrypt");
 
-const SALT_ROUNDS = 6; // 6 is a reasonable value
-
-// const dataSchema = new Schema({
-//   data: {
-//     type: Object,
-//     required: true,
-//   },
-// });
+const SALT_ROUNDS = 6;
 
 const seasonSchema = new Schema(
   {
@@ -47,7 +39,7 @@ const userSchema = new Schema(
     },
     year: {
       type: Number,
-      max: 3000,
+      max: 2020,
       required: true,
     },
     password: {
@@ -70,9 +62,12 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.virtual("currentSeason").get(function () {
-  return this.seasons[0].data;
-});
+userSchema.methods.getTeamData = function() {
+  return mongoose.model('User').find(this.seasons[0].data.teams({id: this.team}));
+}
+// userSchema.virtual("currentSeason").get(function () {
+//   return this.seasons[0].data;
+// });
 
 userSchema.pre("save", function (next) {
   // Save the reference to the user doc
