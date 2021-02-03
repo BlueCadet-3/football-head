@@ -70,6 +70,10 @@ const userSchema = new Schema(
   }
 );
 
+userSchema.virtual("currentSeason").get(function () {
+  return this.seasons[0].data;
+});
+
 userSchema.pre("save", function (next) {
   // Save the reference to the user doc
   const user = this;

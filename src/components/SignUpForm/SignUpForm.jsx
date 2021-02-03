@@ -45,6 +45,7 @@ export default class SignUpForm extends Component {
       // let updatedUser = await getPastSeasons(data.status.previousSeasons);
       let updatedUser = await getPastSeasons(data);
       // setUser to the user with "seasons" data
+      
       console.log("updatedUser:", updatedUser);
       this.props.setUser(updatedUser);
     } catch {
