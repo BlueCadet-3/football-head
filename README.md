@@ -37,7 +37,7 @@
 
 Planning took place on the [Trello](https://trello.com/b/tRo19vkS/football-head) platform
 
-The app is deployed on [Heroku]([http://.herokuapp.com/](https://footballhead.herokuapp.com/)), test credentials are provided below
+The app is deployed on [Heroku](https://footballhead.herokuapp.com/), test credentials are provided below
 
 - User: `test@test.com`
 - Password: `123`
