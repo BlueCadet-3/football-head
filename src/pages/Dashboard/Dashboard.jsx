@@ -41,7 +41,7 @@ export default function Dashboard({ user, setUser, getUser }) {
 
   return (
     <>
-      <h1>Dashboard</h1> - <span><img className="logo" src={teams[1].logo} alt="team logo" /></span>
+      <h1>Dashboard</h1> - <span><img className="logo" src={teams[7].logo} alt="team logo" /></span>
       <h5> League ID: {user.league} </h5>
       <h5>Team ID: {user.team} </h5>
       <h5>

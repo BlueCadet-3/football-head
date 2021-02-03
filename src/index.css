@@ -133,7 +133,8 @@ label {
   justify-content: flex-end;
 }
 
-input, select {
+input,
+select {
   background-color: whitesmoke;
   padding: 0.3rem;
   margin: 1rem;
@@ -146,7 +147,8 @@ input, select {
   outline: none;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border: 0.3vmin dashed var(--bgc-01);
 }
 
