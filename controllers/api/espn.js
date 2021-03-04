@@ -39,13 +39,15 @@ async function create(req, res) {
     console.log("seasons: ", user.seasons);
     await user.seasons.forEach(async (season) => {
       if (!season.data) {
-        let seasonData = await fetch(
-          `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
-        )
-          .then((res) => res.json())
-          .then((res) => (season.data = res[0]));
-        // console.log("season: ", season);
-        console.log("seasonData: ", season.year, seasonData.seasonId);
+        try {
+          await fetch(
+            `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
+          )
+            .then((res) => res.json())
+            .then((res) => (season.data = res[0]));
+        } catch (err) {
+          console.log(err);
+        }
       }
     });
 
