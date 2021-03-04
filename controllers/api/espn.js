@@ -43,12 +43,14 @@ async function create(req, res) {
           `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
         )
           .then((res) => res.json())
-          .then((res) => season.data = res[0])
-          .then((res) => console.log("res: ", res[0]));
+          .then((res) => season.data = res[0]);
         // console.log("season: ", season);
         // console.log("seasonData: ", season.year, seasonData);
       }
     });
+
+    const data = await seasonData(req.user.league, );
+
     // Save!
     console.log("user2: ", user.seasons);
     mongoose.set("debug", false);
