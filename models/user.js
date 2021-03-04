@@ -2,8 +2,6 @@ const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-mongoose.set("debug", true);
-
 const SALT_ROUNDS = 6;
 
 const seasonSchema = new Schema(

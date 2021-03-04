@@ -8,13 +8,13 @@ module.exports = {
   create,
 };
 
-// const seasonData = async function(league, year) {
-//   await fetch(
-//         `${HIST_URL}/${league}?seasonId=${year}&view=mTeam`
-//       )
-//         .then((res) => res.json())
-//         .then((res) => res[0].seasonId);
-// }
+//       .then((res) => res.json())
+//       .then((res) => res[0].seasonId);
+async function seasonData(user, year) {
+  const data = await fetch(
+        `${HIST_URL}/${user.league}?seasonId=${year}&view=mTeam`
+      )
+}
 
 async function create(req, res) {
   // Find the user in the database
@@ -39,17 +39,20 @@ async function create(req, res) {
     // user.seasons[0].data = req.body;
     // Retrieve historical season data
     console.log("seasons: ", user.seasons);
-    user.seasons.forEach(async (season) => {
-      if (!season.data) {
-        let seasonData = await fetch(
-          `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
-        )
-          .then((res) => res.json())
-          .then((res) => console.log(res[0].seasonId));
-        // console.log("season: ", season);
-        // console.log("seasonData: ", season.year, seasonData);
-      }
-    });
+    // user.seasons.forEach(async (season) => {
+    //   if (!season.data) {
+    //     let seasonData = await fetch(
+    //       `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
+    //     )
+    //       .then((res) => res.json())
+    //       .then((res) => console.log(res[0].seasonId));
+    //     // console.log("season: ", season);
+    //     // console.log("seasonData: ", season.year, seasonData);
+    //   }
+    // });
+
+    const data = await seasonData(req.user.league, );
+
     // Save!
     console.log("user2: ", user.seasons);
     mongoose.set("debug", false);
