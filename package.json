@@ -2,6 +2,10 @@
   "name": "football-head",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "15.4.0",
+    "npm": "7.0.15"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
