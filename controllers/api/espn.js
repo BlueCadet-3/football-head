@@ -37,9 +37,9 @@ async function create(req, res) {
     user.seasons.unshift({ year: user.year, data: req.body });
     // Retrieve historical season data
     console.log("seasons: ", user.seasons);
-    await user.seasons.forEach((season) => {
+    await user.seasons.forEach(async (season) => {
       if (!season.data) {
-        fetch(
+        await fetch(
           `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
         )
           .then((res) => res.json())
