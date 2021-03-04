@@ -1,18 +1,18 @@
 import { Component } from "react";
-import { signUp, login } from "../../utilities/users-service";
-import { initSeason, getPastSeasons } from "../../utilities/espn-api";
+import { signUp } from "../../utilities/users-service";
+import { initSeason, getPastData } from "../../utilities/espn-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {
-    email: "",
-    league: "",
-    team: "",
-    year: "",
-    password: "",
-    confirm: "",
+    email: "app@a.com",
+    league: "660619",
+    team: "2",
+    year: "2020",
+    password: "123",
+    confirm: "123",
     error: "",
   };
 
@@ -41,11 +41,12 @@ export default class SignUpForm extends Component {
       // make call to ESPN API with provided league ID and most recent season
       const data = await initSeason(formData.league, formData.year);
       // update user "seasons" property with previous seasons as indicated by ESPN API
-      console.log("user:", user);
       // let updatedUser = await getPastSeasons(data.status.previousSeasons);
-      let updatedUser = await getPastSeasons(data);
+      console.log("user: ", user);
+      console.log("data: ", data);
+      // let updatedUser = await getPastSeasons(data);
+      let updatedUser = await getPastData(data);
       // setUser to the user with "seasons" data
-      
       console.log("updatedUser:", updatedUser);
       this.props.setUser(updatedUser);
     } catch {
