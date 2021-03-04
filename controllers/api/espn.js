@@ -12,8 +12,8 @@ module.exports = {
 //       .then((res) => res[0].seasonId);
 async function seasonData(user, year) {
   const data = await fetch(
-        `${HIST_URL}/${user.league}?seasonId=${year}&view=mTeam`
-      )
+    `${HIST_URL}/${user.league}?seasonId=${year}&view=mTeam`
+  );
 }
 
 async function create(req, res) {
@@ -43,13 +43,13 @@ async function create(req, res) {
           `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
         )
           .then((res) => res.json())
-          .then((res) => season.data = res[0]);
+          .then((res) => (season.data = res[0]));
         // console.log("season: ", season);
-        // console.log("seasonData: ", season.year, seasonData);
+        console.log("seasonData: ", season.year, seasonData.seasonId);
       }
     });
 
-    const data = await seasonData(req.user.league, );
+    const data = await seasonData(req.user.league);
 
     // Save!
     console.log("user2: ", user.seasons);
