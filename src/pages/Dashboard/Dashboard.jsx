@@ -1,6 +1,4 @@
 import * as usersService from "../../utilities/users-service";
-// import { useEffect } from "react";
-// import * as espnService from "../../utilities/espn-api";
 import "../../../node_modules/react-vis/dist/style.css";
 import {
   XYPlot,
@@ -14,15 +12,8 @@ import {
   // LabelSeries,
 } from "react-vis";
 import "./Dashboard.css";
-import { render } from "@testing-library/react";
 
 export default function Dashboard({ user, setUser, getUser }) {
-  async function handleCheckToken() {
-    // Promise will resolve to a Date object
-    const expDate = await usersService.checkToken();
-    console.log(new Date(expDate));
-  }
-
   const teams = user.seasons[0].data.teams;
   const data = [
     { x: 1, y: teams[0].points },
@@ -41,7 +32,10 @@ export default function Dashboard({ user, setUser, getUser }) {
 
   return (
     <>
-      <h1>Dashboard</h1> - <span><img className="logo" src={teams[7].logo} alt="team logo" /></span>
+    <div className="userCard">
+      <span>
+        <img className="logo" src={teams[7].logo} alt="team logo" />
+      </span>
       <h5> League ID: {user.league} </h5>
       <h5>Team ID: {user.team} </h5>
       <h5>
@@ -51,12 +45,14 @@ export default function Dashboard({ user, setUser, getUser }) {
         Record: {teams[1].record.overall.wins} -{" "}
         {teams[1].record.overall.losses}
       </h5>
+    </div>
+
       <XYPlot
-        style={{ backgroundColor: "#333", color: "white" }}
+        style={{ backgroundColor: "#777", color: "white" }}
         width={600}
         height={400}
       >
-        <VerticalGridLines />
+        {/* <VerticalGridLines /> */}
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
