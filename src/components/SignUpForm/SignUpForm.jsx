@@ -7,12 +7,12 @@ import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {
-    email: "",
-    league: "",
-    team: "",
-    year: "",
-    password: "",
-    confirm: "",
+    email: "@app.com",
+    league: "660619",
+    team: "2",
+    year: "2020",
+    password: "123",
+    confirm: "123",
     error: "",
   };
 

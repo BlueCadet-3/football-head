@@ -8,48 +8,37 @@ module.exports = {
   create,
 };
 
+function seasonData(league, year) {
+  return fetch(`${HIST_URL}/${league}?seasonId=${year}&view=mTeam`)
+    .then((res) => res.json())
+    .then((res) => res[0]);
+}
+
 async function create(req, res) {
   // Find the user in the database
   const user = await User.findById(req.user._id);
   // Create array with the years of previous seasons
-  const seasonArr = await req.body.status.previousSeasons.map((num) => {
-    async function seasonData(league, year) {
-      await fetch(
-        `${HIST_URL}/${league}?seasonId=${year}&view=mTeam`
-      )
-      .then((res) => res.json())
-      .then((res) => res[0]);
-    }
+  const seasonArr = await req.body.status.previousSeasons.map(async (num) => {
+    let promise = await seasonData(req.user.league, num);
+    console.log("promise: ", promise);
     return {
       year: num,
-      data: seasonData(req.user.league, num)
+      data: promise,
     };
   });
-  // For each previous season, add to user.seasons
-  seasonArr.forEach((year) => {
+  const updatedData = await Promise.all(seasonArr);
+  console.log("updatedData: ", updatedData);
+  console.log("seasonArr: ", seasonArr);
+  // Add previous season data to user.seasons
+  updatedData.forEach((year) => {
     user.seasons.unshift(year);
   });
-    // Add the current year the user signed up with to seasons[0]
+  // Add the current year the user signed up with to seasons[0]
     // "Shloop" the data from req.body to the user
-    user.seasons.unshift({ year: user.year, data: req.body });
-    // Retrieve historical season data
-    // await user.seasons.forEach(async (season) => {
-    //   if (!season.data) {
-    //     await fetch(
-    //       `${HIST_URL}/${user.league}?seasonId=${season.year}&view=mTeam`
-    //     )
-    //       .then((res) => res.json())
-    //       .then((res) => (season.data = res[0]));
-    //   }
-    // });
-    // Save!
-    console.log("user2: ", user.seasons);
-    mongoose.set("debug", false);
-    res.status(200).json(user);
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(400).json(err);
-  // }
+  user.seasons.unshift({ year: user.year, data: req.body });
+  mongoose.set("debug", false);
+  res.status(200).json(user);
+  // Save!
   user.save(function (err) {
     if (err) {
       console.log(err);
