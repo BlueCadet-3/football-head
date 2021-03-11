@@ -8,15 +8,6 @@ module.exports = {
   create,
 };
 
-//       .then((res) => res.json())
-//       .then((res) => res[0].seasonId);
-async function seasonData(user, year) {
-  const data = await fetch(
-    `${HIST_URL}/${user.league}?seasonId=${year}&view=mTeam`
-  );
-  this.data = data;
-}
-
 async function create(req, res) {
   // Find the user in the database
   const user = await User.findById(req.user._id);
