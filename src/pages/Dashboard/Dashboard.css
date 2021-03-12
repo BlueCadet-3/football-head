@@ -2,7 +2,13 @@ h1 {
   color: var(--bgc-05);
 }
 
+div.logos {
+  display: flex;
+  justify-content: space-between;
+}
+
 img.logo {
   border-radius: 50%;
-  max-width: 15vw;
+  max-width: 6vw;
+  margin: 1em;
 }
