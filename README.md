@@ -54,3 +54,23 @@ The app is deployed on [Heroku](https://footballhead.herokuapp.com/), test crede
 - Create API function for years < 2018
 - Stronger email validation, select year rather than input
 - Style/component overhaul
+
+### Queries
+
+- mDraftDefail
+- mLiveScoring
+- mMatchupScore
+- mPendingTransactions
+- mPositionalRatings
+- mSettings
+- mTeam
+- modular
+- mNav
+- kona_player_info
+- mTransactions2
+- mStatus
+- mPositionalRatingsStats
+- kona_game_state
+- proTeamSchedules - not too sure but enormous
+- players_wl - NFL players currently owned in the league?
+- kona_league_communication - not too sure

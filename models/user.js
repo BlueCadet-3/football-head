@@ -49,6 +49,10 @@ const userSchema = new Schema(
       required: true,
     },
     seasons: [seasonSchema],
+    ownerId: {
+      type: Object,
+      required: false,
+    },
   },
   {
     timestamps: true,
@@ -62,9 +66,11 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.methods.getTeamData = function() {
-  return mongoose.model('User').find(this.seasons[0].data.teams({id: this.team}));
-}
+userSchema.methods.getTeamData = function () {
+  return mongoose
+    .model("User")
+    .find(this.seasons[0].data.teams({ id: this.team }));
+};
 // userSchema.virtual("currentSeason").get(function () {
 //   return this.seasons[0].data;
 // });

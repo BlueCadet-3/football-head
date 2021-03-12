@@ -7,12 +7,12 @@ import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {
-    email: "@app.com",
-    league: "660619",
-    team: "2",
-    year: "2020",
-    password: "123",
-    confirm: "123",
+    email: "",
+    league: "",
+    team: "",
+    year: "",
+    password: "",
+    confirm: "",
     error: "",
   };
 
@@ -35,19 +35,13 @@ export default class SignUpForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      //
       // create user
       const user = await signUp(formData);
-      // make call to ESPN API with provided league ID and most recent season
+      // make initial call to ESPN API with provided league ID and most recent season
       const data = await initSeason(formData.league, formData.year);
       // update user "seasons" property with previous seasons as indicated by ESPN API
-      // let updatedUser = await getPastSeasons(data.status.previousSeasons);
-      console.log("user: ", user);
-      console.log("data: ", data);
-      // let updatedUser = await getPastSeasons(data);
       let updatedUser = await getPastData(data);
       // setUser to the user with "seasons" data
-      console.log("updatedUser:", updatedUser);
       this.props.setUser(updatedUser);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });
@@ -69,21 +63,13 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               placeholder="Required"
               required
+              autoFocus
             />
 
             <label htmlFor="league">
               League ID &nbsp;
               <div className="tooltip">
-                <FontAwesomeIcon icon={faQuestionCircle}>
-                  <span className="tooltiptext">
-                    <img
-                      src="https://www.scriptol.com/images/apache.png"
-                      alt="League ID Tooltip"
-                    />
-                    <h3>How use my site</h3>
-                    The description with an image.
-                  </span>
-                </FontAwesomeIcon>
+                <FontAwesomeIcon icon={faQuestionCircle} />
               </div>
             </label>
 
