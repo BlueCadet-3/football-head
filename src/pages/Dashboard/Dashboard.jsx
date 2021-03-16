@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { useState, PureComponent } from "react";
 import {
   BarChart,
   Bar,
@@ -14,26 +14,22 @@ import PropTypes from "prop-types";
 import "./Dashboard.css";
 
 const colors = [
-  "#000",
-  "#111",
-  "#222",
-  "#333",
-  "#444",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
-  "#555",
+  "#FF0AEF",
+  "#B001EB",
+  "#860DFF",
+  "#3A00E8",
+  "#073DE8",
+  "#1C8AFF",
+  "#15B0EB",
+  "#14F7FF",
+  "#15E8B9",
+  "#2BFF99",
+  "#1CE850",
+  "#34FF33",
 ];
 
-export default function Dashboard({ user, setUser, getUser }) {
-  const teams = user.seasons[0].data.teams;
+export default function Dashboard({ user, year }) {
+  const teams = user.seasons[year].data.teams;
   const data = teams.map((team, idx) => {
     return {
       logo: teams[idx].logo,
@@ -63,7 +59,6 @@ export default function Dashboard({ user, setUser, getUser }) {
           <YAxis type="number" domain={["auto", "auto"]} />
           <Tooltip />
           <Legend />
-          {/* <Bar dataKey="points" fill="#8884d8" /> */}
           <Bar dataKey="points">
             {data.map((entry, index) => (
               <Cell
@@ -84,13 +79,3 @@ export default function Dashboard({ user, setUser, getUser }) {
     </>
   );
 }
-
-// <Bar
-//   dataKey="female"
-//   fill="#8884d8"
-//   label={{ position: "top" }}
-// >
-//   {data.map((entry, index) => (
-//     <Cell key={`cell-${index}`} />
-//   ))}
-// </Bar>

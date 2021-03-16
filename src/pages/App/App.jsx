@@ -14,6 +14,7 @@ library.add(fas);
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [year, setYear] = useState(0);
 
   return (
     <main className="App">
@@ -21,10 +22,10 @@ export default function App() {
         <>
           <Redirect to="/dashboard" />
           <NavBar user={user} setUser={setUser} />
-          <YearBar user={user} />
+          <YearBar user={user} year={year} setYear={setYear} />
           <Switch>
             <Route path="/dashboard">
-              <Dashboard user={user} setUser={setUser} getUser={getUser} />
+              <Dashboard user={user} year={year} />
             </Route>
           </Switch>
         </>
