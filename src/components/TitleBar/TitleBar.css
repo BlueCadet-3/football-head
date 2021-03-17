@@ -13,6 +13,7 @@ div#TitleBar {
 .TitleBar img {
   max-height: 15vmin;
   justify-content: left;
+  object-fit:scale-down;
 }
 
 .TitleBar h1 {

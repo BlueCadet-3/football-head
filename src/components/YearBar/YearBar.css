@@ -10,7 +10,7 @@
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  height: ;
+  height: 0;
   background-color: transparent;
 }
 
@@ -21,7 +21,7 @@
   background-color: var(--bgc-01);
   display: flex;
   justify-content: flex-end;
-  /* overflow-x: scroll; */
+  overflow-x: scroll;
 }
 
 .YearBar a {

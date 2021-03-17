@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
 import { initSeason, getPastData } from "../../utilities/espn-api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
