@@ -35,14 +35,14 @@ export default class SignUpForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      // create user
-      const user = await signUp(formData);
+      await signUp(formData);
       // make initial call to ESPN API with provided league ID and most recent season
       const data = await initSeason(formData.league, formData.year);
       // update user "seasons" property with previous seasons as indicated by ESPN API
-      let updatedUser = await getPastData(data);
+      // create user
+      const user = await getPastData(data);
       // setUser to the user with "seasons" data
-      this.props.setUser(updatedUser);
+      this.props.setUser(user);
     } catch {
       this.setState({ error: "Sign Up Failed - Try Again" });
     }

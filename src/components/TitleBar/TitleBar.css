@@ -1,0 +1,33 @@
+.TitleBar nav {
+  background-color: var(--bgc-02);
+  display: flex;
+  height: 15vmin;
+}
+
+div#TitleBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.TitleBar img {
+  max-height: 15vmin;
+  justify-content: left;
+}
+
+.TitleBar h1 {
+  color: var(--bgc-05);
+  margin: auto 0;
+}
+
+.TitleBar h3 {
+  color: var(--col-04);
+  margin: auto 0;
+}
+
+#logOut {
+  color: var(--bgc-03);
+  font-size: 1.2em;
+  justify-content: right;
+  margin: auto 0 auto 0.2em;
+}

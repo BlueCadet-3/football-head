@@ -6,7 +6,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import Dashboard from "../Dashboard/Dashboard";
-import NavBar from "../../components/NavBar/NavBar";
+import TitleBar from "../../components/TitleBar/TitleBar";
 import YearBar from "../../components/YearBar/YearBar";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -21,7 +21,7 @@ export default function App() {
       {user ? (
         <>
           <Redirect to="/dashboard" />
-          <NavBar user={user} setUser={setUser} />
+          <TitleBar user={user} setUser={setUser} year={year} />
           <YearBar user={user} year={year} setYear={setYear} />
           <Switch>
             <Route path="/dashboard">

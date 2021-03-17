@@ -1,4 +1,3 @@
-import React, { useState, PureComponent } from "react";
 import {
   BarChart,
   Bar,
@@ -7,13 +6,36 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   ResponsiveContainer,
 } from "recharts";
-import PropTypes from "prop-types";
 import "./Dashboard.css";
 
 const colors = [
+  "#FF0AEF",
+  "#B001EB",
+  "#860DFF",
+  "#3A00E8",
+  "#073DE8",
+  "#1C8AFF",
+  "#15B0EB",
+  "#14F7FF",
+  "#15E8B9",
+  "#2BFF99",
+  "#1CE850",
+  "#34FF33",
+  "#FF0AEF",
+  "#B001EB",
+  "#860DFF",
+  "#3A00E8",
+  "#073DE8",
+  "#1C8AFF",
+  "#15B0EB",
+  "#14F7FF",
+  "#15E8B9",
+  "#2BFF99",
+  "#1CE850",
+  "#34FF33",
   "#FF0AEF",
   "#B001EB",
   "#860DFF",
@@ -30,36 +52,48 @@ const colors = [
 
 export default function Dashboard({ user, year }) {
   const teams = user.seasons[year].data.teams;
-  const data = teams.map((team, idx) => {
+  const data = teams.map((team) => {
     return {
-      logo: teams[idx].logo,
-      name: teams[idx].location + " " + teams[idx].nickname,
-      points: teams[idx].points,
+      logo: team.logo,
+      name: team.location + " " + team.nickname,
+      points: Math.round(team.points),
     };
   });
 
   return (
-    <>
-      <div id="logos">
-        {data.map((logo) => {
-          return <img className="logo" src={logo.logo} alt="team logo" />;
+    <div className="Dashboard">
+      {/* <div id="logos">
+        {data.map((team) => {
+          return (
+            <img
+              className="logo"
+              src={team.logo}
+              alt={team.name}
+              width="100px"
+              height="100px"
+            />
+          );
         })}
-      </div>
-      <ResponsiveContainer width="100%" height="40%">
+      </div> */}
+
+      <ResponsiveContainer width="100%" height="100%" className="Chart">
         <BarChart
           data={data}
           margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+            top: 20,
+            right: 40,
+            left: 60,
+            bottom: 0,
           }}
+          barCategoryGap={0}
+          layout="vertical"
         >
-          <CartesianGrid strokeDasharray="4 1 2" />
-          <YAxis type="number" domain={["auto", "auto"]} />
+          <CartesianGrid strokeDasharray="4" horizontal={false} />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="points">
+
+          <YAxis dataKey="name" type="category" tickLine={false} />
+
+          <Bar dataKey="points" background={false}>
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
@@ -68,14 +102,32 @@ export default function Dashboard({ user, year }) {
               />
             ))}
           </Bar>
+
           <XAxis
-            dataKey="name"
-            interval={0}
-            angle="-90"
-            padding={{ left: 10, right: 10 }}
+            dataKey="points"
+            type="number"
+            domain={["(Math.round((dataMin/100 * 0.1))", "auto"]}
+            // domain={[Math.round("dataMin - 200"), "dataMax + 100"]}
+            tickCount={5}
           />
         </BarChart>
       </ResponsiveContainer>
-    </>
+
+      {/* <ResponsiveContainer>
+        <PieChart width="100%" height="100%" className="Chart">
+          <Pie
+            data={data}
+            dataKey="points"
+            nameKey="name"
+            label={true}
+            labelLine={true}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index]} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer> */}
+    </div>
   );
 }
