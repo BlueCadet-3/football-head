@@ -10,7 +10,6 @@
   text-align: center;
   font-size: 5em;
   color: var(--bgc-05);
-  cursor: pointer;
 }
 
 .AuthPage h2 {
@@ -22,4 +21,8 @@
 .AuthPage button {
   color: var(--bgc-04);
   font-size: 2em;
+}
+
+.AuthPage img {
+  object-fit: cover;
 }

@@ -68,9 +68,9 @@ export default class SignUpForm extends Component {
 
             <label htmlFor="league">
               League ID &nbsp;
-              <div className="tooltip">
+              {/* <div className="tooltip">
                 <FontAwesomeIcon icon={faQuestionCircle} />
-              </div>
+              </div> */}
             </label>
 
             <input
@@ -84,13 +84,13 @@ export default class SignUpForm extends Component {
             />
 
             <label htmlFor="year">
-              Year &nbsp;
-              <div className="tooltip">
+              Latest Season &nbsp;
+              {/* <div className="tooltip">
                 <FontAwesomeIcon icon={faQuestionCircle}></FontAwesomeIcon>
-              </div>
+              </div> */}
             </label>
 
-            {/* <select
+            <select
               name="year"
               id="year"
               onChange={this.handleChange}
@@ -101,21 +101,11 @@ export default class SignUpForm extends Component {
               </option>
               <option value={2019}>2019</option>
               <option value={2018}>2018</option>
-            </select> */}
-
-            <input
-              type="number"
-              name="year"
-              id="year"
-              value={this.state.year}
-              onChange={this.handleChange}
-              placeholder="Required"
-              required
-            />
+            </select>
 
             <label htmlFor="team">
               Team ID &nbsp;
-              <FontAwesomeIcon icon={faQuestionCircle} />
+              {/* <FontAwesomeIcon icon={faQuestionCircle} /> */}
             </label>
             <input
               type="number"

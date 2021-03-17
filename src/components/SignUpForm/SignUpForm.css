@@ -1,0 +1,67 @@
+.form-container {
+  max-width: 90vw;
+  padding: 2rem;
+  background-color: var(--bgc-03);
+  border: 0.3vmin solid var(--bgc-05);
+  border-radius: 1rem;
+}
+
+p.error-message {
+  color: var(--bgc-05);
+  text-align: center;
+}
+
+form {
+  display: grid;
+  max-width: 80vw;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.5vmin;
+  color: var(--bgc-05);
+}
+
+label {
+  font-size: 1.3em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+input,
+select {
+  background-color: var(--col-04);
+  padding: 0.3em;
+  margin: 0.5em;
+  font-size: 1.5em;
+  font-family: var(--fnt-body);
+  border: 0.3vmin solid var(--bgc-05);
+  border-radius: 0.5vmin;
+  color: var(--bgc-05);
+  background-image: none !important; /* prevent lastpass */
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border: 0.3vmin dotted var(--bgc-01);
+}
+
+option:hover {
+  background-color: var(--bgc-01);
+}
+
+input::placeholder {
+  opacity: 0.2;
+}
+
+button:disabled,
+form:invalid button[type="submit"] {
+  background-color: var(--bgc-05);
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  background-color: var(--bgc-05);
+  grid-column: span 2;
+  margin: 1vmin 0 0;
+}
