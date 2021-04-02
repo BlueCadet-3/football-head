@@ -15,7 +15,7 @@ export default function Dashboard({ user, year }) {
   return (
     <div className="Dashboard">
       <SeasonPointsChart data={data} />
-      <TeamCards teams={teams} />
+      {/* <TeamCards teams={teams} /> */}
 
 
       {/* <ResponsiveContainer>

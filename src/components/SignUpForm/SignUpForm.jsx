@@ -10,7 +10,7 @@ export default class SignUpForm extends Component {
     email: "",
     league: "",
     team: "",
-    year: "",
+    year: "2020",
     password: "",
     confirm: "",
     error: "",
@@ -67,7 +67,7 @@ export default class SignUpForm extends Component {
             />
 
             <label htmlFor="league">
-              League ID &nbsp;
+              League ID
               {/* <div className="tooltip">
                 <FontAwesomeIcon icon={faQuestionCircle} />
               </div> */}
@@ -84,7 +84,7 @@ export default class SignUpForm extends Component {
             />
 
             <label htmlFor="year">
-              Latest Season &nbsp;
+              Latest Season
               {/* <div className="tooltip">
                 <FontAwesomeIcon icon={faQuestionCircle}></FontAwesomeIcon>
               </div> */}
@@ -96,9 +96,7 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               value={this.state.year}
             >
-              <option selected value={2020}>
-                2020
-              </option>
+              <option value={2020}>2020</option>
               <option value={2019}>2019</option>
               <option value={2018}>2018</option>
             </select>

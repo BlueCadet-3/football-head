@@ -21,7 +21,7 @@
 
 - [React](https://reactjs.org/) - [[docs]](https://reactjs.org/docs/getting-started.html)
   - [Font Awesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
-  - [React-Vis](https://github.com/uber/react-vis) - [[docs]](http://uber.github.io/react-vis/documentation/welcome-to-react-vis)
+  - [Recharts](https://recharts.org/en-US) - [[docs]](https://recharts.org/en-US/guide)
 
 - [Heroku](https://www.heroku.com/)
 
