@@ -56,7 +56,6 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
-    // Even though it's hashed - don't serialize the password
     toJSON: {
       transform: function (doc, ret) {
         delete ret.password;
@@ -74,6 +73,10 @@ userSchema.methods.getTeamData = function () {
 // userSchema.virtual("currentSeason").get(function () {
 //   return this.seasons[0].data;
 // });
+
+userSchema.virtual('domain').get(function () {
+  return this.email.slice(this.email.indexOf('@') + 1);
+});
 
 userSchema.pre("save", function (next) {
   // Save the reference to the user doc

@@ -35,7 +35,7 @@ async function create(req, res) {
   // Remove some data
   user.seasons.forEach((season) => {
     let data = season.data;
-    // Delete useless data
+    // Delete useless data points
     delete data.draftDetail.inProgress;
     delete data.gameId;
     delete data.segmentId;
@@ -48,7 +48,7 @@ async function create(req, res) {
       delete member.lastName;
       delete member.notificationSettings;
     });
-    // Delete convoluted position against opponent data
+    // Delete all convoluted position against opponent data
     delete data.positionAgainstOpponent;
     // Clean up schedule
     // data.schedule.forEach((game) => {
@@ -104,6 +104,29 @@ async function create(req, res) {
       delete team.valuesByStat;
     });
   });
+}
+
+async function create(req, res) {
+  // Find the user in the database
+  const user = await User.findById(req.user._id);
+  // Create array with the years of previous seasons
+  const seasonArr = await req.body.status.previousSeasons.map(async (num) => {
+    let promise = await seasonData(req.user.league, num);
+    return {
+      year: num,
+      data: promise,
+    };
+  });
+  const updatedData = await Promise.all(seasonArr);
+  // Add previous season data to user.seasons
+  updatedData.forEach((year) => {
+    user.seasons.unshift(year);
+  });
+  // Add the current year the user signed up with to seasons[0]
+  // Add the data from req.body to the user
+  user.seasons.unshift({ year: user.year, data: req.body });
+  // Run data through minimizing function
+  minimizeData(user);
   // Save!
   res.status(200).json(user);
   user.save(function (err) {
